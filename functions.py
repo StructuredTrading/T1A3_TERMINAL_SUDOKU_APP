@@ -1,4 +1,27 @@
 import random
+from colorama import Fore, Back
+
+
+def display_grid(grid):
+    grid_text = Fore.BLACK
+    grid_background = Back.WHITE
+    print(f"{grid_background}     1 2 3   4 5 6   7 8 9 {Back.RESET}")
+    print(f"{grid_background}   +----------------------+{Back.RESET}")
+    for row in range(9):
+        print(f"{grid_background}{row + 1}  | ", end="")
+        for col in range(9):
+            if(grid[row][col] == 0):
+                print("_", end=" ")
+            else:
+                print(str(grid[row][col]), end=" ")
+
+            if((col +1) % 3 == 0 and col < 8):
+                print("|", end=" ")
+
+        print(Back.RESET)
+        if((row +1) % 3 == 0 and row < 8):
+            print(f"{grid_background}   +-----------------------{Back.RESET}")
+
 
 def load_game():
     pass
@@ -86,7 +109,6 @@ def generate_grid():
 
     # Creates a 9 X 9 list of lists
     grid = [[0] * 9 for _ in range(9)]
-    print(f"Base = {grid}\n\n")
     solve_sudoku(grid)
 
     puzzle = [row[:] for row in grid]
