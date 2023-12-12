@@ -3,6 +3,17 @@ from colorama import Fore, Back
 
 
 def display_grid(grid):
+    """
+    Displays the Sudoku grid on the screen.
+
+    Parameters:
+    - grid (list): A 9X9 Sudoku grid.
+
+    Returns:
+    - None
+
+    The function is used to display the Sudoku grid to the user, With numbers above and to the left of the grid to be used to help players choose a position for their next move.
+    """
     grid_text = Fore.BLACK
     grid_background = Back.WHITE
     print(f"{grid_background}     1 2 3   4 5 6   7 8 9 {Back.RESET}")
@@ -114,6 +125,8 @@ def generate_grid():
     puzzle = [row[:] for row in grid]
     for _ in range(20):
         row, col = random.randint(0, 8), random.randint(0, 8)
+        while(puzzle[row][col] == 0):
+            row, col = random.randint(0, 8), random.randint(0, 8)
         puzzle[row][col] = 0
 
     return puzzle
