@@ -7,6 +7,40 @@ def submit_details():
     pass
 
 
+# Checks to see if number is valid.
+def is_valid_move(grid, row, col, num):
+    """
+    Check if placing a number in a specified cell is a valid move in a Sudoku grid.
+
+    Parameters:
+    - grid (list): A 9x9 Sudoku grid.
+    - row (int): The row index (0-8) of the cell to check.
+    - col (int): The column index (0-8) of the cell to check.
+    - num (int): The number to check for validity (1-9).
+
+    Returns:
+    - bool: True if the move is valid, False otherwise.
+
+    The function checks whether placing the given number in the specified cell is a valid move
+    according to Sudoku rules. It verifies that the number does not already exist in the same row,
+    column, or the 3x3 sub-grid containing the specified cell.
+    """
+
+
+    # Checks to see if the number is allready in the row or column
+    if num in grid[row] or num in [grid[i][col] for i in range(9)]:
+        return False
+
+    # Creates a '3 X 3' sub-grid and checks to see if number is in subgrid.
+    start_row, start_col = 3 * (row // 3), 3 * (col // 3)
+    for _row in range(start_row, start_row + 3):
+        for _col in range(start_col, start_col + 3):
+            if grid[_row][_col] == num:
+                return False
+
+    # Valid move if number was not found in row, col or sub-grid.
+    return True
+
 
 def solve_sudoku(grid):
     """
