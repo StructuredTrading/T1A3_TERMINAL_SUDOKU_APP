@@ -9,22 +9,6 @@ sudoku_grid = [[]]
 
 
 def play_sudoku():
-    print("Welcome to Sam's Sudoku Puzzler App!")
-
-    load_option = input("Do you want to load a saved game? (y/n): ").lower()
-    if(load_option == "y"):
-        username = sudoku.load_game()
-        if(not username):
-            print("No saved game found. Starting a new game.")
-            sudoku_grid = sudoku.generate_grid(difficulty)
-    else:
-        username = input("Enter a username: ")
-        difficulty = 0
-        while(difficulty < 1 or difficulty > 60):
-            difficulty = int(input(f"Hello {username}, set your difficulty by entering a number between 5 and 60 (The higher the number, the harder the puzzle!): "))
-
-        sudoku_grid = sudoku.generate_grid(difficulty)
-        points = 0
 
     time.sleep(2)
     sudoku.clear_console()
@@ -63,5 +47,20 @@ def play_sudoku():
         else:
             print("Goodbye!")
 
+
+
+
 sudoku.clear_console()
+print("Welcome to Sam's Sudoku Puzzler App!")
+
+load_option = input("Do you want to load a saved game? (y/n): ").lower()
+if(load_option == "y"):
+    username, sudoku_grid = sudoku.load_game()
+    if(not sudoku_grid):
+        username, sudoku_grid = sudoku.new_game(username)
+
+else:
+    username, sudoku_grid = sudoku.new_game()
+    0
+
 play_sudoku()

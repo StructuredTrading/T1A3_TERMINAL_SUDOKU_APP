@@ -38,7 +38,16 @@ def display_grid(grid):
 
 
 def load_game():
-    pass
+    username = input("Input your username to load a save file: ").lower()
+    try:
+        with open(f"{username}_save.pickle", "rb") as file:
+            data = pickle.load(file)
+        print("Game loaded successfully.")
+        return(data["username"], data["sudoku_grid"])
+    except FileNotFoundError:
+        print("No saved game found.")
+        return None, None
+
 
 def save_game(username, sudoku_grid):
     data = {
@@ -49,7 +58,19 @@ def save_game(username, sudoku_grid):
     with open(f"{username}_save.pickle", "wb") as file:
         pickle.dump(data, file)
         print("Game saved successfully.")
-    pass
+
+
+def new_game(username):
+    if(username == None):
+        username = input("Enter a username: ").lower()
+    difficulty = 0
+    while(difficulty < 1 or difficulty > 60):
+        difficulty = int(input(f"Hello {username}, set your difficulty by entering a number between 5 and 60 (The higher the number, the harder the puzzle!): "))
+
+    sudoku_grid = generate_grid(difficulty)
+
+    return username, sudoku_grid
+    
 
 
 # Checks to see if number is valid.
