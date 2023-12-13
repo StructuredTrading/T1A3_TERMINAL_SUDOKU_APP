@@ -107,12 +107,12 @@ def solve_sudoku(grid):
 
 
 # Generates a sudoku grid and returns it
-def generate_grid():
+def generate_grid(difficulty):
     """
     creates a random sudoku grid in a formatted way.
 
     Parameters:
-    - board (list): The 9x9 Sudoku board represented as a list of lists.
+    - grid (list): The 9x9 Sudoku grid represented as a list of lists.
 
     Returns:
     list[list[int]]
@@ -120,10 +120,18 @@ def generate_grid():
 
     # Creates a 9 X 9 list of lists
     grid = [[0] * 9 for _ in range(9)]
+
+    # Randomizes the first row the grid
+    randomize_first_row = random.sample(range(1,10), 9)
+    for _col in range(9):
+        grid[0][_col] = randomize_first_row[_col]
+    
+    # Completes the rest of the sudoku puzzle
     solve_sudoku(grid)
 
+    # Removes 'X' amount of numbers specified by the user setting the difficulty and returns the grid to solve.
     puzzle = [row[:] for row in grid]
-    for _ in range(20):
+    for _ in range(difficulty):
         row, col = random.randint(0, 8), random.randint(0, 8)
         while(puzzle[row][col] == 0):
             row, col = random.randint(0, 8), random.randint(0, 8)

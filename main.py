@@ -19,7 +19,11 @@ def play_sudoku():
             sudoku_grid = functions.generate_grid()
     else:
         username = input("Enter a username: ")
-        sudoku_grid = functions.generate_grid()
+        difficulty = 0
+        while(difficulty < 5 or difficulty > 60):
+            difficulty = int(input("Set youre difficulty by entering a number between 5 and 60 (The higher the number, the harder the puzzle!): "))
+
+        sudoku_grid = functions.generate_grid(difficulty)
         points = 0
 
     time.sleep(2)
