@@ -38,6 +38,18 @@ def display_grid(grid):
 
 
 def load_game():
+    """
+    Load a saved Sudoku game.
+
+    Returns:
+    - Tuple[str, list]: A tuple containing the loaded player's username and the Sudoku grid.
+      If no saved game is found, returns (None, None).
+
+    This function prompts the user to input their username and attempts to load a saved Sudoku game
+    from a binary file named "{username}_save.pickle". If the file is found, the game is loaded
+    successfully, and the player's username and Sudoku grid are returned. If no saved game is found,
+    a message is printed, and (None, None) is returned.
+    """
     username = input("Input your username to load a save file: ").lower()
     try:
         with open(f"{username}_save.pickle", "rb") as file:
@@ -46,10 +58,21 @@ def load_game():
         return(data["username"], data["sudoku_grid"])
     except FileNotFoundError:
         print("No saved game found.")
-        return None, None
+        return username, None
 
 
 def save_game(username, sudoku_grid):
+    """
+    Save the current Sudoku game state.
+
+    Parameters:
+    - username (str): The player's username.
+    - sudoku_grid (list): The current state of the Sudoku grid.
+
+    This function saves the current state of a Sudoku game, including the player's
+    username and the Sudoku grid, into a binary file using pickle. The file is named
+    "{username}_save.pickle". A success message is printed after saving.
+    """
     data = {
         "username": username,
         "sudoku_grid": sudoku_grid
@@ -61,12 +84,28 @@ def save_game(username, sudoku_grid):
 
 
 def new_game(username):
+    """
+    Start a new Sudoku game.
+
+    Parameters:
+    - username (str): The player's username. If None, prompt the user to enter a username.
+
+    Returns:
+    - Tuple[str, list]: A tuple containing the player's username and the generated Sudoku grid.
+
+    This function initiates a new Sudoku game, allowing the player to set their username
+    and choose the difficulty level. If a username is not provided, the user will be prompted
+    to enter one. The difficulty level is set by the player, and a Sudoku grid is generated
+    based on the chosen difficulty.
+    """
     if(username == None):
         username = input("Enter a username: ").lower()
     difficulty = 0
     while(difficulty < 1 or difficulty > 60):
-        difficulty = int(input(f"Hello {username}, set your difficulty by entering a number between 5 and 60 (The higher the number, the harder the puzzle!): "))
-
+        try:
+            difficulty = int(input(f"Hello {username}, set your difficulty by entering a number between 5 and 60 (The higher the number, the harder the puzzle!): "))
+        except ValueError:
+            print("Invalid input.")
     sudoku_grid = generate_grid(difficulty)
 
     return username, sudoku_grid

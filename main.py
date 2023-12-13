@@ -1,14 +1,15 @@
-from colorama import Fore, Style
-from os import system
-import random
+# from colorama import Fore, Style
+# from os import system
+# import random
 import time
-import pickle
+# import pickle
 import functions as sudoku
 
 sudoku_grid = [[]]
 
 
-def play_sudoku():
+# The main function which is used to play the game.
+def play_sudoku(username, sudoku_grid):
 
     time.sleep(2)
     sudoku.clear_console()
@@ -18,7 +19,7 @@ def play_sudoku():
         try:
             row = int(input("Enter the row number (1-9, or 0 to save and exit): "))
             if row == 0:
-                print("Goodbye!")
+                print(f"Goodbye, {username}!")
                 sudoku.save_game(username, sudoku_grid)
                 break
             col = int(input("Enter the column number (1-9): "))
@@ -43,12 +44,15 @@ def play_sudoku():
         play_again = input("Would you like to play again? (y/n)").lower()
         if(play_again == "y"):
             sudoku.clear_console()
-            play_sudoku()
+            username, sudoku_grid = sudoku.new_game(username)
+            play_sudoku(username, sudoku_grid)
         else:
-            print("Goodbye!")
+            print(f"Goodbye, {username}!")
 
 
 
+
+# Start of Application
 
 sudoku.clear_console()
 print("Welcome to Sam's Sudoku Puzzler App!")
@@ -56,11 +60,14 @@ print("Welcome to Sam's Sudoku Puzzler App!")
 load_option = input("Do you want to load a saved game? (y/n): ").lower()
 if(load_option == "y"):
     username, sudoku_grid = sudoku.load_game()
+
+    # No saved game found.
     if(not sudoku_grid):
+        print(f"Starting new game as: {username}")
         username, sudoku_grid = sudoku.new_game(username)
 
 else:
-    username, sudoku_grid = sudoku.new_game()
-    0
+    username, sudoku_grid = sudoku.new_game(None)
+    
 
-play_sudoku()
+play_sudoku(username, sudoku_grid)
