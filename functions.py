@@ -1,4 +1,4 @@
-import random
+import random, subprocess, os, pickle
 from colorama import Fore, Back
 
 
@@ -16,6 +16,9 @@ def display_grid(grid):
     """
     grid_text = Fore.BLACK
     grid_background = Back.WHITE
+    print(f"   {grid_background}Sam's Sudoku Puzzler!{Back.RESET}")
+    print()
+    print()
     print(f"{grid_background}     1 2 3   4 5 6   7 8 9 {Back.RESET}")
     print(f"{grid_background}   +----------------------+{Back.RESET}")
     for row in range(9):
@@ -37,7 +40,15 @@ def display_grid(grid):
 def load_game():
     pass
 
-def submit_details():
+def save_game(username, sudoku_grid):
+    data = {
+        "username": username,
+        "sudoku_grid": sudoku_grid
+    }
+
+    with open(f"{username}_save.pickle", "wb") as file:
+        pickle.dump(data, file)
+        print("Game saved successfully.")
     pass
 
 
@@ -139,3 +150,28 @@ def generate_grid(difficulty):
 
     return puzzle
 
+def clear_console():
+    """Clears the console screen."""
+    subprocess.call('clear' if os.name == 'posix' else 'cls', shell=True)
+
+def moves_left(sudoku_grid):
+    """
+    Count the number of empty cells (moves left) in a Sudoku grid.
+
+    Parameters:
+    - sudoku_grid (list): A 9x9 Sudoku grid represented as a list of lists.
+      Empty cells are denoted by the value 0.
+
+    Returns:
+    - int: The number of empty cells remaining in the Sudoku grid.
+
+    This function iterates through each cell in the Sudoku grid and counts the
+    number of empty cells (cells with the value 0), indicating the remaining moves
+    available in the Sudoku puzzle.
+    """
+    moves = 0
+    for _row in range(9):
+        for _col in range(9):
+            if(sudoku_grid[_row][_col] == 0):
+                moves += 1
+    return(moves)
