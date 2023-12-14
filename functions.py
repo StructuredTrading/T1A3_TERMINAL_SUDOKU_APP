@@ -1,4 +1,8 @@
-import random, subprocess, os, pickle
+import random 
+import subprocess
+import os
+import pickle
+
 from colorama import Fore, Back
 
 

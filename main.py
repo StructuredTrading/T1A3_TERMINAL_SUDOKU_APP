@@ -1,8 +1,4 @@
-# from colorama import Fore, Style
-# from os import system
-# import random
 import time
-# import pickle
 import functions as sudoku
 
 sudoku_grid = [[]]
@@ -11,10 +7,12 @@ sudoku_grid = [[]]
 # The main function which is used to play the game.
 def play_sudoku(username, sudoku_grid):
 
+    # sleep 2 seconds before printing the new sudoku puzzle to the screen. (gives a loading effect.)
     time.sleep(2)
     sudoku.clear_console()
     sudoku.display_grid(sudoku_grid)
 
+    # Main loop, While theres still blank spaces on the sudoku board, keep playing.
     while sudoku.moves_left(sudoku_grid) > 0:
         try:
             row = int(input("Enter the row number (1-9, or 0 to save and exit): "))
@@ -39,6 +37,8 @@ def play_sudoku(username, sudoku_grid):
                 print("Invalid input! Please enter valid row, column, and number.")
         except ValueError:
             print("Invalid input! Please enter valid row, column, and number.")
+    
+    # When there's no moves left on the board. Congratulate the player and ask if they want to play again.
     else:
         print("You won!\n")
         play_again = input("Would you like to play again? (y/n)").lower()
@@ -47,16 +47,17 @@ def play_sudoku(username, sudoku_grid):
             username, sudoku_grid = sudoku.new_game(username)
             play_sudoku(username, sudoku_grid)
         else:
+            sudoku.save_game(username, sudoku_grid)
             print(f"Goodbye, {username}!")
 
 
 
-
 # Start of Application
-
 sudoku.clear_console()
 print("Welcome to Sam's Sudoku Puzzler App!")
 
+
+# Prompt user to load a saved game.
 load_option = input("Do you want to load a saved game? (y/n): ").lower()
 if(load_option == "y"):
     username, sudoku_grid = sudoku.load_game()
@@ -67,7 +68,7 @@ if(load_option == "y"):
         username, sudoku_grid = sudoku.new_game(username)
 
 else:
-    username, sudoku_grid = sudoku.new_game(None)
-    
+    username, sudoku_grid = sudoku.new_game("")
 
+# Start sudoku game. 
 play_sudoku(username, sudoku_grid)
