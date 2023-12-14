@@ -2,6 +2,8 @@ import random, subprocess, os, pickle
 from colorama import Fore, Back
 
 
+
+# Displays the sudoku grid
 def display_grid(grid):
     """
     Displays the Sudoku grid on the screen.
@@ -37,6 +39,33 @@ def display_grid(grid):
             print(f"{grid_background}   +-----------------------{Back.RESET}")
 
 
+
+def valid_username(username):
+    """
+    Check if a username is valid.
+
+    Parameters:
+    - username (str): The input username to be validated.
+
+    Returns:
+    - bool: True if the username consists only of alphabetic characters,
+            False otherwise.
+
+    This function validates a username by checking if it consists only of alphabetic
+    characters. If the username is valid, it returns True. If the username is non-empty
+    but contains non-alphabetic characters or spaces, it prints an error message and
+    returns False. If the username is empty, it returns False.
+    """
+    if(username.isalpha()):
+        return True
+    elif(username != ""):
+        print("Please only enter Alphabetic characters without spaces.")
+        return False
+    return False
+
+
+
+# Load's a saved game.
 def load_game():
     """
     Load a saved Sudoku game.
@@ -50,8 +79,10 @@ def load_game():
     successfully, and the player's username and Sudoku grid are returned. If no saved game is found,
     a message is printed, and (None, None) is returned.
     """
-    username = input("Input your username to load a save file: ").lower()
     try:
+        username = ""
+        while not valid_username(username):
+            username = input("Input your username to load a save file: ").lower()
         with open(f"{username}_save.pickle", "rb") as file:
             data = pickle.load(file)
         print("Game loaded successfully.")
@@ -61,6 +92,8 @@ def load_game():
         return username, None
 
 
+
+# Save's the game.
 def save_game(username, sudoku_grid):
     """
     Save the current Sudoku game state.
@@ -83,6 +116,8 @@ def save_game(username, sudoku_grid):
         print("Game saved successfully.")
 
 
+
+# Sets difficulty for a new sudoku game.
 def new_game(username):
     """
     Start a new Sudoku game.
@@ -98,8 +133,9 @@ def new_game(username):
     to enter one. The difficulty level is set by the player, and a Sudoku grid is generated
     based on the chosen difficulty.
     """
-    if(username == None):
-        username = input("Enter a username: ").lower()
+    if(username == ""):
+        while(not valid_username(username)):
+            username = input("Enter a username: ").lower()
     difficulty = 0
     while(difficulty < 1 or difficulty > 60):
         try:
@@ -131,7 +167,6 @@ def is_valid_move(grid, row, col, num):
     column, or the 3x3 sub-grid containing the specified cell.
     """
 
-
     # Checks to see if the number is allready in the row or column
     if num in grid[row] or num in [grid[i][col] for i in range(9)]:
         return False
@@ -147,6 +182,8 @@ def is_valid_move(grid, row, col, num):
     return True
 
 
+
+# Completes a sudoku puzzle.
 def solve_sudoku(grid):
     """
     Solve a Sudoku puzzle using a backtracking algorithm.
@@ -175,6 +212,7 @@ def solve_sudoku(grid):
                         grid[_row][_col] = 0
                 return False
     return True
+
 
 
 # Generates a sudoku grid and returns it
@@ -210,10 +248,16 @@ def generate_grid(difficulty):
 
     return puzzle
 
+
+
+# Clears the console screen
 def clear_console():
     """Clears the console screen."""
     subprocess.call('clear' if os.name == 'posix' else 'cls', shell=True)
 
+
+
+# Returns how many moves left
 def moves_left(sudoku_grid):
     """
     Count the number of empty cells (moves left) in a Sudoku grid.
