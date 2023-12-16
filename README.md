@@ -7,7 +7,9 @@
 <br>
 <br>
 
-<a href="https://github.com/StructuredTrading/T1A3_TERMINAL_SUDOKU_APP"> Link to Github Repository</a>
+<a href="https://github.com/StructuredTrading/T1A3_TERMINAL_SUDOKU_APP">Github Repository</a>
+
+<a href="https://app.asana.com/0/1206149212914837/1206149212914837">Asana Project Management</a>
 
 
 ## Project Information
@@ -60,9 +62,31 @@ As part of the development process for the Sudoku Puzzler App, I leveraged the A
 
 The implimentation plan was to break down each feature:
 - Generate Random Sudoku Puzzles.
-- Create a Save File Function.
-- Create a Load File Function.
+  - Create a basic generate function that creates a 9 X 9 grid of numbers 1-9
+  - Perform tests on sudoku generate function to confirm puzzles are valid numbers
+  - remove / hide numbers to make the puzzle playable
+  - create a option for users to select difficulty or how many numbers to solve in puzzle
+  - Bug test and implement correctly error handling
+  
+<br>
 
+- Create a Save File Function.
+  - Find what imports may be able to help with creating a save file
+  - implement a function to save the current state of the sudoku game to a file
+  - Prompt the user for input to trigger the save function (eg choosing to quit the game)
+  - implement error handling in the save function to manage any issues that may arise.
+  - test the functionality of the save file.
+  
+<br>
+
+- Create a Load File Function.
+  - Research ways to load a save file
+  - Create a option for players to generate a new sudoku puzzle or load a previously saved puzzle
+  - Ensure puzzles are loading correctly and are continuing on from their previous state
+  - import libraries if needed to complete the task.
+  - perform bug testing and error handling.
+
+<br>
 
 The list of features ready to be implimented:
 
@@ -101,3 +125,7 @@ The Load File function is designed to read a saved ".pickle" file, of the data, 
 <img src="./docs/create_load_file_function_doing.png" alt="create_load_file_function_doing"></img>
 
 <img src="./docs/all_tasks_list_complete.png" alt="all_task_list_complete"></img>
+
+<br>
+
+## Sam's Sudoku Puzzler App Help Documentation
