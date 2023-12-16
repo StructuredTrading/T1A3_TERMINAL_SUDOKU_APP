@@ -129,3 +129,44 @@ The Load File function is designed to read a saved ".pickle" file, of the data, 
 <br>
 
 ## Sam's Sudoku Puzzler App Help Documentation
+
+### Installation
+
+#### Requirements
+
+Ensure you have the following prerequisites installed on your system:
+
+- Python (version3.6 or higher)
+- pip (Python package installer)
+
+#### Installation Steps
+
+1. Clone The Repository:
+
+```
+git clone https://github.com/StructuredTrading/T1A3_TERMINAL_SUDOKU_APP.git
+```
+
+<br>
+
+2. Navigate to the Project Directory:
+
+```
+cd T1A3_TERMINAL_SUDOKU_APP
+```
+
+<br>
+
+3. Make sure bash script is executable with the following command
+
+```
+chmod +x run.sh
+```
+
+<br>
+
+4. Install Dependencies:
+
+```
+bash run.sh
+```
