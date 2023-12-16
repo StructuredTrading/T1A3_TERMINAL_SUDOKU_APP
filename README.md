@@ -29,3 +29,15 @@ This project follows the Python style conventions outlined in PEP8.
   - Save the current state of a Sudoku game and load it later to continue playing.
 - User-Friendly Interface:
   - Intuitive design for a seamless user experience. 
+  
+
+
+## Implementation Plan
+
+### Overview
+
+As part of the development process for the Sudoku Puzzler App, I leveraged the Asana project management tool to streamline implimentation of different features and keep on track for deadlines of implimentation and development.
+
+<img src="./docs/features_task_list.png" alt= features_task_list></img>
+
+#### Sudoku Puzzle Generation
