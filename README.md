@@ -128,6 +128,16 @@ The Load File function is designed to read a saved ".pickle" file, of the data, 
 
 <br>
 
+### Testing
+
+<br>
+
+Once functions were written, testing was performed using pytest to make sure the functions are working as expected. Here is the results of the pytest log:
+
+<img src="./docs/pytest_results.png" alt="pytest_results">
+
+<br>
+
 ## Sam's Sudoku Puzzler App Help Documentation
 
 ### Installation
@@ -192,3 +202,46 @@ python3 main.py
 <br>
 
 ### Gameplay Instructions
+
+1. Welcome Screen - This is the first screen you will see when opening the sudoku App. You will be prompted to enter 'y' or 'n' to load a saved game. If you enter anything other then 'n' you will start a new game. 
+<img src="./docs/welcome_screen.png" alt="welcome_screen"></img>
+
+<br>
+
+2. Load Screen - if you entered 'y' for yes, you will then be prompted to enter a username to load a saved game file.
+<img src="./docs/load_screen.png" alt="load_screen"></img>
+
+<br>
+
+3. Game Loaded Successfully - if your saved game was found, you will see this screen to indicate it has loaded successfully. Once loaded it will display the sudoku grid as it was when you previously quit.
+<img src="./docs/game_loaded_successfully.png" alt="game_loaded_successfully"></img>
+
+<br>
+
+4. No Save Found - if there was not a save file under that name, You will automatically create a new game with the entered username and be asked to choose a difficulty.
+<img src="./docs/no_save_found.png" alt="no_save_found"></img>
+
+<br>
+
+5. New Game Screen - if you didn't select to load a saved game, this is the screen you would see. You will be prompted to enter a username.
+<img src="./docs/new_game_screen.png" alt="new_game_screen"></img>
+
+<br>
+
+6. Select Difficulty - Once have entered a username you will need to select your difficulty between 5 and 60. The number represents how many numbers you will need to solve within the sudoku grid. So entering a higher number will result in a greater difficulty.
+<img src="./docs/difficulty_screen.png" alt="difficulty_screen"></img>
+
+<br>
+
+7. Sudoku Game Screen - This is the sudoku game screen. You will be prompted to enter the row number, followed by the column number, followed by the number to solve the grid.
+<img src="./docs/sudoku_grid_screen.png" alt="sudoku_grid_screen"></img>
+
+<br>
+
+8. Invalid Entry - If for some reason the entry you have entered is invalid, this is the screen you will see. You will be prompted to enter again.
+<img src="./docs/sudoku_invalid_entry.png" alt="sudoku_invalid_entry"></img>
+
+<br>
+
+9. You Win Screen - This screen will display the message 'you win!' and prompt the player to choose if they would like to play again or quit.
+<img src="./docs/you_win_screen.png" alt="you_win_screen"></img>
