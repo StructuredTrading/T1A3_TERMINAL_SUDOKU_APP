@@ -40,7 +40,15 @@ def play_sudoku(username, sudoku_grid):
     
     # When there's no moves left on the board. Congratulate the player and ask if they want to play again.
     else:
-        print("You won!\n")
+        
+        print("                                                       ,---. ")
+        print(",--.   ,--.                     ,--.   ,--.,--.        |   | ")
+        print(" \  `.'  /,---. ,--.,--.        |  |   |  |`--',--,--, |  .' ")
+        print("  '.    /| .-. ||  ||  |        |  |.'.|  |,--.|      \|  |  ")
+        print("    |  | ' '-' ''  ''  '        |   ,'.   ||  ||  ||  |`--'  ")
+        print("    `--'  `---'  `----'         '--'   '--'`--'`--''--'.--.  ")
+        print("                                                       '--'  \n")
+
         play_again = input("Would you like to play again? (y/n)").lower()
         if(play_again == "y"):
             sudoku.clear_console()
