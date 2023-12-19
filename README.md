@@ -165,8 +165,30 @@ chmod +x run.sh
 
 <br>
 
-4. Install Dependencies:
+4. Install Dependencies / Run App:
 
 ```
 bash run.sh
 ```
+
+<br>
+
+### Running the Application
+
+1. If You have allready run the 'run.sh' bash script. you can simply navigate to the project directory:
+
+```
+cd T1A3_TERMINAL_SUDOKU_APP
+```
+
+<br>
+
+2. Open the python main.py file:
+
+```
+python3 main.py
+```
+
+<br>
+
+### Gameplay Instructions

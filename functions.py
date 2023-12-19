@@ -22,13 +22,13 @@ def display_grid(grid):
     """
     grid_text = Fore.BLACK
     grid_background = Back.WHITE
-    print(f"   {grid_background}Sam's Sudoku Puzzler!{Back.RESET}")
+    print(f"   {grid_background}{grid_text}Sam's Sudoku Puzzler!{Back.RESET}")
     print()
     print()
     print(f"{grid_background}     1 2 3   4 5 6   7 8 9 {Back.RESET}")
     print(f"{grid_background}   +----------------------+{Back.RESET}")
     for row in range(9):
-        print(f"{grid_background}{row + 1}  | ", end="")
+        print(f"{grid_background}{grid_text}{row + 1}  | ", end="")
         for col in range(9):
             if(grid[row][col] == 0):
                 print("_", end=" ")
@@ -41,6 +41,8 @@ def display_grid(grid):
         print(Back.RESET)
         if((row +1) % 3 == 0 and row < 8):
             print(f"{grid_background}   +-----------------------{Back.RESET}")
+
+    print(f"{Fore.RESET}")
 
 
 
@@ -141,7 +143,7 @@ def new_game(username):
         while(not valid_username(username)):
             username = input("Enter a username: ").lower()
     difficulty = 0
-    while(difficulty < 1 or difficulty > 60):
+    while(difficulty < 5 or difficulty > 60):
         try:
             difficulty = int(input(f"Hello {username}, set your difficulty by entering a number between 5 and 60 (The higher the number, the harder the puzzle!): "))
         except ValueError:
