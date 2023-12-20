@@ -11,6 +11,10 @@
 
 <a href="https://app.asana.com/0/1206149212914837/1206149212914837">Asana Project Management</a>
 
+<a href="https://www.youtube.com/watch?v=KAmJvE16Y-0">Slide-Show Presentation</a>
+
+<br>
+
 
 ## Project Information
 
@@ -148,6 +152,7 @@ Ensure you have the following prerequisites installed on your system:
 
 - Python (version3.6 or higher)
 - pip (Python package installer)
+- Colorama
 
 #### Installation Steps
 

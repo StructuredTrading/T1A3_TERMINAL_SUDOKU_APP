@@ -47,7 +47,8 @@ def play_sudoku(username, sudoku_grid):
         print("  '.    /| .-. ||  ||  |        |  |.'.|  |,--.|      \|  |  ")
         print("    |  | ' '-' ''  ''  '        |   ,'.   ||  ||  ||  |`--'  ")
         print("    `--'  `---'  `----'         '--'   '--'`--'`--''--'.--.  ")
-        print("                                                       '--'  \n")
+        print("                                                       '--'  ")
+        print()
 
         play_again = input("Would you like to play again? (y/n)").lower()
         if(play_again == "y"):

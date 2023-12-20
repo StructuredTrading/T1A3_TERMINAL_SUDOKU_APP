@@ -2,7 +2,7 @@ import random
 import subprocess
 import os
 import pickle
-
+# import colorama
 from colorama import Fore, Back
 
 
@@ -236,7 +236,7 @@ def generate_grid(difficulty):
     # Creates a 9 X 9 list of lists
     grid = [[0] * 9 for _ in range(9)]
 
-    # Randomizes the first row the grid
+    # Randomizes the first row the grid, then assign to first row.
     randomize_first_row = random.sample(range(1,10), 9)
     for _col in range(9):
         grid[0][_col] = randomize_first_row[_col]
